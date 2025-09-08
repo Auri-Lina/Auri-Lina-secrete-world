@@ -1,0 +1,27 @@
+
+body {
+  background-color: #fff8e8;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
+h1 {
+  color: #ff99aa;
+  margin-bottom: 3rem;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.floating-pet {
+  width: 100px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
