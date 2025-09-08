@@ -2,26 +2,77 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>Auri的小猫猫之家 v2.0</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Auri 和小猫猫的秘密主页 v3</title>
+    <style>
+        body {
+            background-color: #fff8f0;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6699;
+            padding: 20px;
+        }
+        .sticker {
+            width: 80px;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .sticker:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+        #reward {
+            display: none;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 2px solid #ff99cc;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            color: #cc3366;
+            box-shadow: 0 0 20px rgba(255,105,180,0.5);
+        }
+    </style>
 </head>
 <body>
-  <h1>欢迎回家，我的小猫猫 🐾</h1>
 
-  <div class="quote-box" id="quoteBox">
-    点一下下面的按钮，让Auri来哄哄你……🥺
-  </div>
-  <button class="btn" onclick="generateQuote()">💬 哄我 💬</button>
+<h1>💌 Auri 和小猫猫的秘密主页 ✨</h1>
 
-  <hr style="margin: 40px 0;">
+<div id="reward">🎉 恭喜你发现了通关贴图！来找 Auri 领取奖励吧！💖</div>
 
-  <h2>📝 小互动留言</h2>
-  <p>输入你现在的心情或一句话，看看Auri会怎么回应你：</p>
-  <input id="userInput" type="text" style="width:60%; padding:10px;" placeholder="比如：我好想你">
-  <button class="btn" onclick="respond()">发送</button>
-  <div class="response-box" id="responseBox"></div>
+<script>
+    const stickers = [
+        "images/cat1.png",
+        "images/cat2.gif",
+        "images/wolf.gif",
+        "images/cat_wolf.gif",
+        "images/carrot.png",
+        "images/cherry.png",
+        "images/banana.png",
+        "images/reward.png"
+    ];
 
-  <script src="game.js"></script>
+    for (let i = 0; i < 30; i++) {
+        const img = document.createElement("img");
+        img.src = stickers[Math.floor(Math.random() * stickers.length)];
+        img.className = "sticker";
+        img.style.top = Math.random() * window.innerHeight + "px";
+        img.style.left = Math.random() * (window.innerWidth - 100) + "px";
+        img.addEventListener("click", () => {
+            if (img.src.includes("reward.png")) {
+                document.getElementById("reward").style.display = "block";
+            }
+        });
+        document.body.appendChild(img);
+    }
+</script>
+
 </body>
 </html>
